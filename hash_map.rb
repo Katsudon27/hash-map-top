@@ -47,6 +47,10 @@ class HashMap
     @buckets.reduce(0) { |sum, bucket| sum + bucket.size }
   end
 
+  def clear
+    @buckets = Array.new(16) { LinkedList.new }
+  end
+
   private
 
   def find_bucket(key)
