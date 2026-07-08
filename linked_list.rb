@@ -110,31 +110,17 @@ class LinkedList
     end
   end
 
-  def index(key)
-    unless @head.nil?
-      tmp_node = @head
-      index = 0
-      until tmp_node.nil?
-        return index if tmp_node.key == key
-
-        tmp_node = tmp_node.next_node
-        index += 1
-      end
-    end
-    nil
-  end
-
-  def remove_at(index)
-    raise IndexError if index.negative? || index >= size
-
-    if index.zero?
+  def remove_node(key)
+    if !@head.nil? && @head.key == key
       value = @head.value
       @head = @head.next_node
       value
-    else
+    elsif contains?(key)
       previous_node = @head
       current_node = @head.next_node
-      (index - 1).times do
+      until current_node.nil?
+        break if current_node.key == key
+
         previous_node = current_node
         current_node = current_node.next_node
       end
