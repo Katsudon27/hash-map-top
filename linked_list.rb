@@ -160,4 +160,8 @@ class LinkedList
     end
     values
   end
+
+  def entries
+    keys.zip(values)
+  end
 end
