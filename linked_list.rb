@@ -150,4 +150,14 @@ class LinkedList
     end
     keys
   end
+
+  def values
+    values = []
+    tmp_node = @head
+    until tmp_node.nil?
+      values << tmp_node.value
+      tmp_node = tmp_node.next_node
+    end
+    values
+  end
 end

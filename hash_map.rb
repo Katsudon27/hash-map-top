@@ -59,6 +59,14 @@ class HashMap
     keys
   end
 
+  def values
+    values = []
+    @buckets.each do |bucket|
+      values += bucket.values
+    end
+    values
+  end
+
   private
 
   def find_bucket(key)
