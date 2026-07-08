@@ -128,7 +128,9 @@ class LinkedList
     raise IndexError if index.negative? || index >= size
 
     if index.zero?
+      value = @head.value
       @head = @head.next_node
+      value
     else
       previous_node = @head
       current_node = @head.next_node
@@ -138,6 +140,7 @@ class LinkedList
       end
       # Remove the node at the given index by linking its previous node to its next node
       previous_node.next_node = current_node.next_node
+      current_node.value
     end
   end
 
