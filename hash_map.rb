@@ -30,8 +30,12 @@ class HashMap
     bucket.find_value(key)
   end
 
+  private
+
   def find_bucket(key)
     bucket_index = hash(key) % @capacity
+    raise IndexError if bucket_index.negative? || bucket_index >= @buckets.length
+
     @buckets[bucket_index]
   end
 end
