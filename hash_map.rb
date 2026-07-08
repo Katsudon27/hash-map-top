@@ -35,6 +35,14 @@ class HashMap
     bucket.contains?(key)
   end
 
+  def remove(key)
+    bucket = find_bucket(key)
+    key_index = bucket.index(key)
+    return nil if key_index.nil?
+
+    bucket.remove_at(key_index)
+  end
+
   private
 
   def find_bucket(key)
