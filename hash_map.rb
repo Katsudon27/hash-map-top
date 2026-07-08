@@ -16,6 +16,8 @@ class HashMap
   end
 
   def set(key, value)
+    expand_buckets if grow_buckets?
+
     bucket = find_bucket(key)
 
     if bucket.contains?(key)
@@ -82,5 +84,18 @@ class HashMap
     raise IndexError if bucket_index.negative? || bucket_index >= @buckets.length
 
     @buckets[bucket_index]
+  end
+
+  def grow_buckets?
+    @capacity * @load_factor < length + 1
+  end
+
+  def expand_buckets
+    prev_entries = entries
+    @capacity *= 2
+    @buckets = Array.new(@capacity) { LinkedList.new }
+    prev_entries.each do |entry|
+      set(entry[0], entry[1])
+    end
   end
 end
