@@ -18,7 +18,7 @@ class HashMap
   def set(key, value)
     bucket = find_bucket(key)
 
-    if bucket.contains(key)
+    if bucket.contains?(key)
       bucket.update_node_value(key, value)
     else
       bucket.append(key, value)
@@ -28,6 +28,11 @@ class HashMap
   def get(key)
     bucket = find_bucket(key)
     bucket.find_value(key)
+  end
+
+  def has?(key)
+    bucket = find_bucket(key)
+    bucket.contains?(key)
   end
 
   private
