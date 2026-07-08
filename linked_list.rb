@@ -55,24 +55,6 @@ class LinkedList
     tmp_node
   end
 
-  def at(index)
-    return nil if index > size || index.negative?
-
-    tmp_node = @head
-    index.times do
-      tmp_node = tmp_node.next_node
-    end
-    tmp_node.value
-  end
-
-  def pop
-    return @head if @head.nil?
-
-    tmp_node = @head
-    @head = @head.next_node
-    tmp_node.value
-  end
-
   def contains?(key)
     return false if @head.nil?
 
