@@ -26,7 +26,7 @@ class LinkedList
     end
   end
 
-  def prepend(value)
+  def prepend(key, value)
     @head = Node.new(key, value, @head)
   end
 
