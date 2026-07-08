@@ -51,6 +51,14 @@ class HashMap
     @buckets = Array.new(16) { LinkedList.new }
   end
 
+  def keys
+    keys = []
+    @buckets.each do |bucket|
+      keys += bucket.keys
+    end
+    keys
+  end
+
   private
 
   def find_bucket(key)
