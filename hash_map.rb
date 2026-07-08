@@ -53,7 +53,7 @@ class HashMap
   def keys
     keys = []
     @buckets.each do |bucket|
-      keys += bucket.keys
+      keys += bucket.retrieve("key")
     end
     keys
   end
@@ -61,7 +61,7 @@ class HashMap
   def values
     values = []
     @buckets.each do |bucket|
-      values += bucket.values
+      values += bucket.retrieve("value")
     end
     values
   end

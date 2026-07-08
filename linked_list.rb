@@ -94,7 +94,7 @@ class LinkedList
 
   def remove_node(key)
     if !@head.nil? && @head.key == key
-      value = @head.value
+      value = head
       @head = @head.next_node
       value
     elsif contains?(key)
@@ -112,27 +112,21 @@ class LinkedList
     end
   end
 
-  def keys
-    keys = []
+  def retrieve(data)
+    results = []
     tmp_node = @head
     until tmp_node.nil?
-      keys << tmp_node.key
+      results << if data == "value"
+                   tmp_node.value
+                 else
+                   tmp_node.key
+                 end
       tmp_node = tmp_node.next_node
     end
-    keys
-  end
-
-  def values
-    values = []
-    tmp_node = @head
-    until tmp_node.nil?
-      values << tmp_node.value
-      tmp_node = tmp_node.next_node
-    end
-    values
+    results
   end
 
   def entries
-    keys.zip(values)
+    retrieve("key").zip(retrieve("value"))
   end
 end
