@@ -85,15 +85,13 @@ class LinkedList
     false
   end
 
-  def index(value)
+  def find_value(key)
     unless @head.nil?
       tmp_node = @head
-      index = 0
       until tmp_node.nil?
-        return index if tmp_node.value == value
+        return tmp_node.value if tmp_node.key == key
 
         tmp_node = tmp_node.next_node
-        index += 1
       end
     end
     nil
