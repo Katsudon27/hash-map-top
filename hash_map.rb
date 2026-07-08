@@ -16,8 +16,7 @@ class HashMap
   end
 
   def set(key, value)
-    bucket_index = hash(key) % @capacity
-    bucket = @buckets[bucket_index]
+    bucket = find_bucket(key)
 
     if bucket.contains(key)
       bucket.update_node_value(key, value)
@@ -27,8 +26,12 @@ class HashMap
   end
 
   def get(key)
-    bucket_index = hash(key) % @capacity
-    bucket = @buckets[bucket_index]
+    bucket = find_bucket(key)
     bucket.find_value(key)
+  end
+
+  def find_bucket(key)
+    bucket_index = hash(key) % @capacity
+    @buckets[bucket_index]
   end
 end
