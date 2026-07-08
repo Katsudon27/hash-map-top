@@ -43,6 +43,10 @@ class HashMap
     bucket.remove_at(key_index)
   end
 
+  def length
+    @buckets.reduce(0) { |sum, bucket| sum + bucket.size }
+  end
+
   private
 
   def find_bucket(key)
