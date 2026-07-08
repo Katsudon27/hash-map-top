@@ -73,12 +73,12 @@ class LinkedList
     tmp_node.value
   end
 
-  def contains?(value)
+  def contains?(key)
     return false if @head.nil?
 
     tmp_node = @head
     until tmp_node.nil?
-      return true if tmp_node.value == value
+      return true if tmp_node.key == key
 
       tmp_node = tmp_node.next_node
     end
@@ -97,6 +97,19 @@ class LinkedList
       end
     end
     nil
+  end
+
+  def update_node_value(key, value)
+    return nil if @head.nil?
+
+    tmp_node = @head
+    until tmp_node.nil?
+      if tmp_node.key == key
+        tmp_node.value = value
+        break
+      end
+      tmp_node = tmp_node.next_node
+    end
   end
 
   def to_s
