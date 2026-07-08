@@ -140,4 +140,14 @@ class LinkedList
       previous_node.next_node = current_node.next_node
     end
   end
+
+  def keys
+    keys = []
+    tmp_node = @head
+    until tmp_node.nil?
+      keys << tmp_node.key
+      tmp_node = tmp_node.next_node
+    end
+    keys
+  end
 end
